@@ -1,0 +1,14 @@
+C:\Users\User\source\repos\Control_Statements_In_C#\bin\Debug\net10.0\Control_Statements_In_C#.exe
+C:\Users\User\source\repos\Control_Statements_In_C#\bin\Debug\net10.0\Control_Statements_In_C#.deps.json
+C:\Users\User\source\repos\Control_Statements_In_C#\bin\Debug\net10.0\Control_Statements_In_C#.runtimeconfig.json
+C:\Users\User\source\repos\Control_Statements_In_C#\bin\Debug\net10.0\Control_Statements_In_C#.dll
+C:\Users\User\source\repos\Control_Statements_In_C#\bin\Debug\net10.0\Control_Statements_In_C#.pdb
+C:\Users\User\source\repos\Control_Statements_In_C#\obj\Debug\net10.0\Control_Statements_In_C#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\Control_Statements_In_C#\obj\Debug\net10.0\Control_Statements_In_C#.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\Control_Statements_In_C#\obj\Debug\net10.0\Control_Statements_In_C#.AssemblyInfo.cs
+C:\Users\User\source\repos\Control_Statements_In_C#\obj\Debug\net10.0\Control_Statements_In_C#.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Control_Statements_In_C#\obj\Debug\net10.0\Control_Statements_In_C#.dll
+C:\Users\User\source\repos\Control_Statements_In_C#\obj\Debug\net10.0\refint\Control_Statements_In_C#.dll
+C:\Users\User\source\repos\Control_Statements_In_C#\obj\Debug\net10.0\Control_Statements_In_C#.pdb
+C:\Users\User\source\repos\Control_Statements_In_C#\obj\Debug\net10.0\Control_Statements_In_C#.genruntimeconfig.cache
+C:\Users\User\source\repos\Control_Statements_In_C#\obj\Debug\net10.0\ref\Control_Statements_In_C#.dll
