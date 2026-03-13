@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "First.NET_Console_Application/1.0.0": {
+        "runtime": {
+          "First.NET_Console_Application.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "First.NET_Console_Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,14 @@
+C:\Users\User\source\repos\First.NET_Console_Application\bin\Release\net10.0\First.NET_Console_Application.exe
+C:\Users\User\source\repos\First.NET_Console_Application\bin\Release\net10.0\First.NET_Console_Application.deps.json
+C:\Users\User\source\repos\First.NET_Console_Application\bin\Release\net10.0\First.NET_Console_Application.runtimeconfig.json
+C:\Users\User\source\repos\First.NET_Console_Application\bin\Release\net10.0\First.NET_Console_Application.dll
+C:\Users\User\source\repos\First.NET_Console_Application\bin\Release\net10.0\First.NET_Console_Application.pdb
+C:\Users\User\source\repos\First.NET_Console_Application\obj\Release\net10.0\First.NET_Console_Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\First.NET_Console_Application\obj\Release\net10.0\First.NET_Console_Application.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\First.NET_Console_Application\obj\Release\net10.0\First.NET_Console_Application.AssemblyInfo.cs
+C:\Users\User\source\repos\First.NET_Console_Application\obj\Release\net10.0\First.NET_Console_Application.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\First.NET_Console_Application\obj\Release\net10.0\First.NET_Console_Application.dll
+C:\Users\User\source\repos\First.NET_Console_Application\obj\Release\net10.0\refint\First.NET_Console_Application.dll
+C:\Users\User\source\repos\First.NET_Console_Application\obj\Release\net10.0\First.NET_Console_Application.pdb
+C:\Users\User\source\repos\First.NET_Console_Application\obj\Release\net10.0\First.NET_Console_Application.genruntimeconfig.cache
+C:\Users\User\source\repos\First.NET_Console_Application\obj\Release\net10.0\ref\First.NET_Console_Application.dll
