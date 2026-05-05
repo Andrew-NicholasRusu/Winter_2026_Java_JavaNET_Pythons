@@ -1,0 +1,35 @@
+.root {
+    -fx-background-color: #ffffff;
+}
+
+.input-field {
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+    -fx-background-color: #fff3e0;
+    -fx-border-color: #ffb74d;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+.action-btn {
+    -fx-background-color: #ef6c00;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 6px 12px;
+    -fx-background-radius: 6px;
+}
+
+.action-btn:hover {
+    -fx-background-color: #e65100;
+}
+
+.stack-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+    -fx-font-weight: bold;
+    -fx-padding: 0 10px;
+}
+
+.stack-item {
+    -fx-effect: dropshadow(gaussian, #ffcc80, 5, 0.2, 0, 2);
+}

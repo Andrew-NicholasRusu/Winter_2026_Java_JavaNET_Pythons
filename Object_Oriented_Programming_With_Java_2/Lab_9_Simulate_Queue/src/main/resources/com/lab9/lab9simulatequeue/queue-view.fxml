@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<VBox alignment="CENTER" spacing="30.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.lab9.lab9simulatequeue.QueueController">
+    <padding>
+        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0"/>
+    </padding>
+    <!--    Top Input Section-->
+    <HBox alignment="CENTER" spacing="15.0">
+        <TextField fx:id="inputField" promptText="Enter Value " styleClass="input-field"/>
+        <Button onAction="#onEnqueueClick" styleClass="action-btn" text="Enqueue" />
+        <Button onAction="#onDequeueClick" styleClass="action-btn" text="Dequeue" />
+    </HBox>
+
+    <HBox alignment="CENTER" spacing="15.0">
+        <Label text="Head --&gt;" />
+        <HBox fx:id="queueContainer" alignment="CENTER" spacing="10.0"/>
+        <Label text="&lt;-- Tail"/>
+    </HBox>
+
+
+    <Label fx:id="messageLabel"/>
+
+</VBox>
