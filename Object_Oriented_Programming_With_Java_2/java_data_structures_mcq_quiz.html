@@ -1,0 +1,437 @@
+
+<h2 class="sr-only">Java Data Structures Multiple Choice Quiz — 30 questions covering Lists, Queues, Stacks, Trees, and Maps from the course slides.</h2>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); }
+  .quiz-wrap { padding: 1rem 0; }
+  .progress-bar-bg { height: 4px; background: var(--color-border-tertiary); border-radius: 2px; margin-bottom: 1.5rem; }
+  .progress-bar-fill { height: 4px; background: #534AB7; border-radius: 2px; transition: width 0.4s; }
+  .q-counter { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 0.5rem; }
+  .q-text { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 1.25rem; line-height: 1.55; }
+  .q-text code { font-family: var(--font-mono); font-size: 13px; background: var(--color-background-secondary); padding: 1px 5px; border-radius: 4px; }
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .opt-btn { text-align: left; padding: 10px 14px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); background: var(--color-background-primary); cursor: pointer; font-size: 14px; color: var(--color-text-primary); line-height: 1.45; transition: background 0.15s, border-color 0.15s; }
+  .opt-btn:hover:not(:disabled) { background: var(--color-background-secondary); border-color: var(--color-border-primary); }
+  .opt-btn.correct { background: #EAF3DE; border-color: #3B6D11; color: #27500A; }
+  .opt-btn.wrong { background: #FCEBEB; border-color: #A32D2D; color: #791F1F; }
+  .opt-btn.reveal { background: #EAF3DE; border-color: #3B6D11; color: #27500A; }
+  .opt-btn:disabled { cursor: default; }
+  .feedback { margin-top: 1rem; font-size: 13.5px; padding: 10px 14px; border-radius: var(--border-radius-md); line-height: 1.5; }
+  .feedback.correct { background: #EAF3DE; color: #27500A; }
+  .feedback.wrong { background: #FCEBEB; color: #791F1F; }
+  .nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem; }
+  .nav-btn { padding: 8px 20px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); background: transparent; cursor: pointer; font-size: 14px; color: var(--color-text-primary); }
+  .nav-btn:hover { background: var(--color-background-secondary); }
+  .nav-btn.primary { background: #534AB7; color: #EEEDFE; border-color: #534AB7; }
+  .nav-btn.primary:hover { background: #3C3489; }
+  .score-wrap { text-align: center; padding: 2rem 0; }
+  .score-num { font-size: 48px; font-weight: 500; color: #534AB7; }
+  .score-label { font-size: 15px; color: var(--color-text-secondary); margin-top: 4px; }
+  .score-msg { font-size: 14px; color: var(--color-text-primary); margin-top: 1.5rem; line-height: 1.6; }
+  .cat-badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 10px; background: #EEEDFE; color: #3C3489; margin-bottom: 0.5rem; }
+  code { font-family: var(--font-mono); font-size: 13px; background: var(--color-background-secondary); padding: 1px 5px; border-radius: 4px; }
+  pre { font-family: var(--font-mono); font-size: 12.5px; background: var(--color-background-secondary); padding: 10px 12px; border-radius: var(--border-radius-md); margin: 0.5rem 0 1rem; white-space: pre-wrap; line-height: 1.5; color: var(--color-text-primary); }
+</style>
+
+<div class="quiz-wrap">
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="prog"></div></div>
+  <div id="quiz-body"></div>
+</div>
+
+<script>
+const qs = [
+  {
+    cat: "Data Structures",
+    q: "Which statement best describes a data structure in Java?",
+    opts: [
+      "A variable that holds a single value",
+      "A collection of data organized in some fashion that supports operations for accessing and manipulating data",
+      "A primitive type like int or double",
+      "A method that processes data"
+    ],
+    ans: 1,
+    exp: "A data structure is a collection of data organized in some fashion. It not only stores data but also supports operations for accessing and manipulating the data."
+  },
+  {
+    cat: "Collections",
+    q: "In Java, data structures are referred to as:",
+    opts: ["Arrays", "Collections", "Variables", "Primitives"],
+    ans: 1,
+    exp: "In Java, data structures are called Collections."
+  },
+  {
+    cat: "ArrayList",
+    q: "Which method reduces an ArrayList's capacity to match its current size?",
+    opts: ["shrink()", "resize()", "trimToSize()", "compact()"],
+    ans: 2,
+    exp: "The trimToSize() method is used to reduce the array capacity to the size of the list."
+  },
+  {
+    cat: "ArrayList",
+    q: "What happens when an ArrayList exceeds its capacity?",
+    opts: [
+      "An exception is thrown",
+      "A larger new array is created and all elements are copied to it",
+      "The list stops accepting new elements",
+      "The oldest element is automatically removed"
+    ],
+    ans: 1,
+    exp: "If the capacity of the array is exceeded, a larger new array is created and all the elements from the current array are copied to the new array."
+  },
+  {
+    cat: "ArrayList",
+    q: "Does an ArrayList automatically shrink when elements are removed?",
+    opts: ["Yes, always", "Only when size drops below 50%", "No, it does not automatically shrink", "Only for primitive types"],
+    ans: 2,
+    exp: "An ArrayList does not automatically shrink. You must call trimToSize() explicitly."
+  },
+  {
+    cat: "LinkedList",
+    q: "In a singly linked list, each node stores:",
+    opts: [
+      "Only the data object",
+      "The data object and a reference to the next node",
+      "The data object and two references to child nodes",
+      "Only the memory address of the next node"
+    ],
+    ans: 1,
+    exp: "Each node stores the data object and a reference (memory address) of the next node in the linked list."
+  },
+  {
+    cat: "LinkedList",
+    q: "Which LinkedList method adds an element to the beginning of the list?",
+    opts: ["addFirst()", "insertHead()", "prepend()", "addStart()"],
+    ans: 0,
+    exp: "The addFirst(o: E) method adds the object to the head (beginning) of the list."
+  },
+  {
+    cat: "LinkedList",
+    q: "Which LinkedList method returns AND removes the last element?",
+    opts: ["getLast()", "peekLast()", "removeLast()", "popLast()"],
+    ans: 2,
+    exp: "removeLast() returns and removes the last element from the list. getLast() only returns it without removing."
+  },
+  {
+    cat: "ArrayList vs LinkedList",
+    q: "Your application frequently inserts and deletes elements at the beginning of a list. Which implementation should you prefer?",
+    opts: ["ArrayList", "LinkedList", "Vector", "Array"],
+    ans: 1,
+    exp: "If your application requires the insertion or deletion of elements from the beginning of the list, you should choose LinkedList."
+  },
+  {
+    cat: "ArrayList vs LinkedList",
+    q: "Your application needs random access through an index with no insertions or deletions except at the end. Which is the most efficient choice?",
+    opts: ["LinkedList", "Stack", "ArrayList", "TreeMap"],
+    ans: 2,
+    exp: "If you need to support random access through an index without inserting or removing elements from any place other than the end, ArrayList offers the most efficient collection."
+  },
+  {
+    cat: "Stack",
+    q: "The Stack class follows which ordering principle?",
+    opts: ["FIFO — First In First Out", "LIFO — Last In First Out", "Priority-based ordering", "Natural sorted ordering"],
+    ans: 1,
+    exp: "The Stack class represents a last-in-first-out (LIFO) stack of objects."
+  },
+  {
+    cat: "Stack",
+    q: "Which Stack method retrieves the top element WITHOUT removing it?",
+    opts: ["pop()", "top()", "peek()", "get()"],
+    ans: 2,
+    exp: "peek() returns the top element in the stack without removing it. pop() returns AND removes it."
+  },
+  {
+    cat: "Stack",
+    q: "Consider this code. What does <code>stack.pop()</code> return if the stack holds [1, 2, 3] with 3 on top?\n<pre>Stack<Integer> stack = new Stack<>();\nstack.push(1); stack.push(2); stack.push(3);\nint val = stack.pop();</pre>",
+    opts: ["1", "2", "3", "Throws an exception"],
+    ans: 2,
+    exp: "pop() removes and returns the TOP element. Since 3 was pushed last, it is on top, so pop() returns 3."
+  },
+  {
+    cat: "Stack",
+    q: "Which class does Stack extend in Java?",
+    opts: ["ArrayList", "LinkedList", "Vector", "AbstractList"],
+    ans: 2,
+    exp: "The Stack class extends java.util.Vector."
+  },
+  {
+    cat: "Queue",
+    q: "A Queue is a _____ data structure.",
+    opts: ["Last-In First-Out (LIFO)", "First-In First-Out (FIFO)", "Sorted ordered", "Random access"],
+    ans: 1,
+    exp: "A queue is a first-in/first-out data structure. Elements are appended to the end and removed from the beginning."
+  },
+  {
+    cat: "Queue",
+    q: "Which Queue method inserts an element into the queue?",
+    opts: ["push()", "add()", "offer()", "enqueue()"],
+    ans: 2,
+    exp: "The offer(element: E) method inserts an element into the queue."
+  },
+  {
+    cat: "Queue",
+    q: "What is the difference between <code>poll()</code> and <code>remove()</code> in the Queue interface?",
+    opts: [
+      "They are identical",
+      "poll() returns null if the queue is empty; remove() throws an exception",
+      "remove() returns null; poll() throws an exception",
+      "poll() removes from the tail; remove() from the head"
+    ],
+    ans: 1,
+    exp: "poll() retrieves and removes the head of the queue, returning null if empty. remove() also retrieves and removes the head but throws an exception if the queue is empty."
+  },
+  {
+    cat: "Queue",
+    q: "Since Queue is an interface, which concrete class is commonly used to implement it?",
+    opts: ["ArrayList", "Stack", "LinkedList", "Vector"],
+    ans: 2,
+    exp: "You can use a LinkedList object because LinkedList implements both Deque and Queue.\n\nQueue<Integer> myQueue = new LinkedList<>();"
+  },
+  {
+    cat: "PriorityQueue",
+    q: "In a PriorityQueue, which element is removed first when poll() is called?",
+    opts: [
+      "The element inserted first",
+      "The element inserted last",
+      "The element with the highest priority",
+      "A random element"
+    ],
+    ans: 2,
+    exp: "In a priority queue, elements are assigned priorities. When accessing elements, the element with the highest priority is removed first."
+  },
+  {
+    cat: "PriorityQueue",
+    q: "What is the default initial capacity of a PriorityQueue created with <code>new PriorityQueue()</code>?",
+    opts: ["8", "10", "11", "16"],
+    ans: 2,
+    exp: "PriorityQueue() creates a default priority queue with initial capacity 11."
+  },
+  {
+    cat: "Collections Framework",
+    q: "Which two top-level types of collections does the Java Collections Framework support?",
+    opts: [
+      "List and Set",
+      "Collection (for storing elements) and Map (for key/value pairs)",
+      "Queue and Stack",
+      "ArrayList and LinkedList"
+    ],
+    ans: 1,
+    exp: "The Java Collections Framework supports two types: Collection (for storing a collection of elements) and Map (for storing key/value pairs)."
+  },
+  {
+    cat: "Collections Framework",
+    q: "Which interfaces are direct subinterfaces of Collection?",
+    opts: [
+      "ArrayList, LinkedList, Stack",
+      "Set, List, and Queue",
+      "HashMap, TreeMap, LinkedHashMap",
+      "Iterator and Iterable"
+    ],
+    ans: 1,
+    exp: "Set and List are subinterfaces of Collection. Queue is also a subinterface of Collection."
+  },
+  {
+    cat: "Iterator",
+    q: "What is the primary purpose of an Iterator in Java?",
+    opts: [
+      "To sort a collection",
+      "To walk through a data structure without exposing how data is stored",
+      "To copy one collection into another",
+      "To search for an element by key"
+    ],
+    ans: 1,
+    exp: "Iterator is a classic design pattern for walking through a data structure without having to expose the details of how data is stored in the data structure."
+  },
+  {
+    cat: "Iterator",
+    q: "What does the <code>hasNext()</code> method of Iterator return?",
+    opts: [
+      "The next element",
+      "True if this iterator has more elements to traverse",
+      "The size of the remaining collection",
+      "The index of the next element"
+    ],
+    ans: 1,
+    exp: "hasNext() returns true if this iterator has more elements to traverse."
+  },
+  {
+    cat: "Collections Utility",
+    q: "Which method from <code>java.util.Collections</code> searches for a key in a sorted list?",
+    opts: ["find()", "search()", "binarySearch()", "locate()"],
+    ans: 2,
+    exp: "Collections.binarySearch(list, key) searches the key in the sorted list using binary search."
+  },
+  {
+    cat: "Comparable",
+    q: "To use <code>Collections.sort()</code> on a list of custom objects, the class must:",
+    opts: [
+      "Extend ArrayList",
+      "Implement the Comparable interface and override compareTo()",
+      "Implement the Iterator interface",
+      "Override toString()"
+    ],
+    ans: 1,
+    exp: "Virtually all Collections utility methods require your objects to implement the Comparable interface. You override compareTo() to define natural ordering."
+  },
+  {
+    cat: "Comparator",
+    q: "What does the <code>compare(T e1, T e2)</code> method return when e1 is LESS than e2?",
+    opts: ["A positive value", "Zero", "A negative value", "null"],
+    ans: 2,
+    exp: "compare() returns a negative value if element1 is less than element2, a positive value if greater, and zero if equal."
+  },
+  {
+    cat: "Map",
+    q: "Which method is used to add key-value pairs to a HashMap?",
+    opts: ["add()", "insert()", "put()", "set()"],
+    ans: 2,
+    exp: "For adding elements to a Map, use put().\n\nmyMap.put(\"google\", \"http://www.google.com\");"
+  },
+  {
+    cat: "TreeMap",
+    q: "How does a TreeMap differ from a HashMap?",
+    opts: [
+      "TreeMap only allows String keys",
+      "TreeMap maintains entries in sorted (natural or custom) order; HashMap provides no ordering guarantee",
+      "HashMap is slower for lookups",
+      "TreeMap uses hashing; HashMap uses a tree structure"
+    ],
+    ans: 1,
+    exp: "A TreeMap stores key-value pairs in a sorted, tree-like structure and maintains its entries in natural order or a custom order. A HashMap uses hashing and provides no ordering guarantees."
+  },
+  {
+    cat: "TreeMap",
+    q: "What will the output order be for this code?\n<pre>TreeMap<Integer, String> map = new TreeMap<>();\nmap.put(3, \"Three\");\nmap.put(1, \"One\");\nmap.put(2, \"Two\");\nSystem.out.println(map);</pre>",
+    opts: [
+      "{3=Three, 1=One, 2=Two}",
+      "{1=One, 2=Two, 3=Three}",
+      "{2=Two, 1=One, 3=Three}",
+      "The order is unpredictable"
+    ],
+    ans: 1,
+    exp: "TreeMap automatically sorts keys in ascending natural order for numeric types. So the output is {1=One, 2=Two, 3=Three} regardless of insertion order."
+  },
+  {
+    cat: "TreeMap",
+    q: "Which code creates a TreeMap sorted in DESCENDING order?",
+    opts: [
+      "<code>new TreeMap&lt;&gt;()</code>",
+      "<code>new TreeMap&lt;&gt;(Collections.reverseOrder())</code>",
+      "<code>new TreeMap&lt;&gt;(Comparator.ascending())</code>",
+      "<code>new TreeMap&lt;&gt;(Collections.sort())</code>"
+    ],
+    ans: 1,
+    exp: "To get reverse (descending) ordering in a TreeMap, pass Collections.reverseOrder() as the comparator:\n\nnew TreeMap<>(Collections.reverseOrder());"
+  },
+  {
+    cat: "Tree Structure",
+    q: "In a tree data structure, what is the first element called?",
+    opts: ["Leaf", "Branch", "Root", "Head"],
+    ans: 2,
+    exp: "There is a root node which is the first element in the tree. Nodes with no children are called leaves."
+  },
+  {
+    cat: "Stack — Expression Evaluation",
+    q: "When evaluating the expression <code>(1 + 2)*4 − 3</code> using the two-stack algorithm, what is the final result?",
+    opts: ["9", "12", "8", "15"],
+    ans: 0,
+    exp: "(1+2)=3, then 3*4=12, then 12−3=9. The slide traces this step by step showing the final operandStack holds 9."
+  },
+  {
+    cat: "Stack — Expression Evaluation",
+    q: "In Phase 1 of the expression evaluation algorithm, what action is taken when a '(' symbol is encountered?",
+    opts: [
+      "Push it to operandStack",
+      "Push it to operatorStack",
+      "Ignore it",
+      "Immediately evaluate the expression so far"
+    ],
+    ans: 1,
+    exp: "Phase 1.4: If the extracted item is a '(' symbol, push it to operatorStack."
+  },
+  {
+    cat: "Collection Interface",
+    q: "Which Collection interface method checks if the collection contains NO elements?",
+    opts: ["size() == 0", "isEmpty()", "contains(null)", "clear()"],
+    ans: 1,
+    exp: "isEmpty() returns true if this collection contains no elements."
+  }
+];
+
+let current = 0;
+let score = 0;
+let answered = new Array(qs.length).fill(null);
+
+function render() {
+  const body = document.getElementById('quiz-body');
+  const prog = document.getElementById('prog');
+
+  if (current >= qs.length) {
+    prog.style.width = '100%';
+    const pct = Math.round(score / qs.length * 100);
+    let msg = pct >= 80 ? "Excellent work! You have a strong grasp of Java collections." :
+              pct >= 60 ? "Good effort! Review the sections where you made mistakes." :
+              "Keep studying — go back through the slides and try again.";
+    body.innerHTML = `
+      <div class="score-wrap">
+        <div class="score-num">${score}/${qs.length}</div>
+        <div class="score-label">${pct}% correct</div>
+        <div class="score-msg">${msg}</div>
+        <button class="nav-btn primary" style="margin-top:1.5rem" onclick="restart()">Restart quiz</button>
+      </div>`;
+    return;
+  }
+
+  prog.style.width = ((current / qs.length) * 100) + '%';
+  const q = qs[current];
+  const sel = answered[current];
+
+  let optsHtml = q.opts.map((o, i) => {
+    let cls = 'opt-btn';
+    if (sel !== null) {
+      if (i === q.ans) cls += ' correct';
+      else if (i === sel && sel !== q.ans) cls += ' wrong';
+    }
+    return `<button class="${cls}" onclick="answer(${i})" ${sel !== null ? 'disabled' : ''}>${o}</button>`;
+  }).join('');
+
+  let feedbackHtml = '';
+  if (sel !== null) {
+    const ok = sel === q.ans;
+    feedbackHtml = `<div class="feedback ${ok ? 'correct' : 'wrong'}">
+      ${ok ? '✓ Correct.' : '✗ Incorrect.'} ${q.exp}
+    </div>`;
+  }
+
+  body.innerHTML = `
+    <div class="q-counter">Question ${current + 1} of ${qs.length}</div>
+    <div class="cat-badge">${q.cat}</div>
+    <div class="q-text">${q.q}</div>
+    <div class="options">${optsHtml}</div>
+    ${feedbackHtml}
+    <div class="nav-row">
+      <button class="nav-btn" onclick="go(-1)" ${current === 0 ? 'disabled' : ''}>← Back</button>
+      <button class="nav-btn primary" onclick="go(1)">${current === qs.length - 1 ? 'See results →' : 'Next →'}</button>
+    </div>`;
+}
+
+function answer(i) {
+  if (answered[current] !== null) return;
+  answered[current] = i;
+  if (i === qs[current].ans) score++;
+  render();
+}
+
+function go(dir) {
+  current += dir;
+  render();
+}
+
+function restart() {
+  current = 0; score = 0;
+  answered = new Array(qs.length).fill(null);
+  render();
+}
+
+render();
+</script>
