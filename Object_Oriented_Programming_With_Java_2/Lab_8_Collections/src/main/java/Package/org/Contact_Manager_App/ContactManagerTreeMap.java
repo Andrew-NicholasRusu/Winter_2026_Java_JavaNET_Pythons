@@ -1,6 +1,10 @@
 package Package.org.Contact_Manager_App;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class ContactManagerTreeMap extends ContactManager implements Printable {
 
@@ -23,7 +27,7 @@ public class ContactManagerTreeMap extends ContactManager implements Printable {
 
     @Override
     public void addContact(String id, String name, String mobile, String email) {
-        contactsList.put(id, new Contact(id, name, mobile, email));
+        contactsList.put(id, new Contact(name, mobile, email, id));
     }
 
     @Override
@@ -56,6 +60,11 @@ public class ContactManagerTreeMap extends ContactManager implements Printable {
             }
         }
         return result;
+    }
+
+    @Override
+    public boolean removeContact(String id) {
+        return contactsList.remove(id) != null;
     }
 
     @Override
