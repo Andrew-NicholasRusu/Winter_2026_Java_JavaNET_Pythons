@@ -8,12 +8,14 @@ public class InsertTextCommand implements Command {
     private String text;
     private int position;
 
-    public InsertTextCommand (StringBuilder document, String text, int position) {
+    // Constructor
+    public InsertTextCommand(StringBuilder document, String text, int position) {
         this.document = document;
         this.text = text;
         this.position = position;
     }
 
+    // Methods
     @Override
     public void execute() {
         if (position < 0 || position > document.length()) {
@@ -25,13 +27,13 @@ public class InsertTextCommand implements Command {
     @Override
     public void undo() {
         if (position < 0 || position + text.length() > document.length()) {
-            throw new IllegalArgumentException("Document state is invalid for undoing insert.");
+            throw new IllegalStateException("Document state is invalid for undoing insert.");
         }
         document.delete(position, position + text.length());
     }
 
     @Override
     public String getDescription() {
-        return "Insert " + text + " as position " + position;
+        return "Insert \"" + text + "\" at position " + position;
     }
 }
