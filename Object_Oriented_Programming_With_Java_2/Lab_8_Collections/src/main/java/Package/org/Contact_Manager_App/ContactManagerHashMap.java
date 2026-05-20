@@ -1,9 +1,13 @@
 package Package.org.Contact_Manager_App;
 
 // f) Define a class called ContactManagerHashMap that extends ContactManager and
-// implements Printable
+// implements Package.org.Contact_Manager_App.Printable
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class ContactManagerHashMap extends ContactManager implements Printable {
 
@@ -30,8 +34,9 @@ public class ContactManagerHashMap extends ContactManager implements Printable {
 
     @Override
     public void addContact(String id, String name, String mobile, String email) {
-
-    }
+        Contact contact = new Contact(name, mobile, email, id);
+        contactsList.put(id, contact);
+}
 
     @Override
     public void addContact(Contact contact) {
@@ -66,6 +71,11 @@ public class ContactManagerHashMap extends ContactManager implements Printable {
     }
 
     @Override
+    public boolean removeContact(String id) {
+        return contactsList.remove(id) != null;
+    }
+
+    @Override
     public void printAll() {
         System.out.println("Hash Map Content:");
         System.out.println("----------------------------------------------------------");
@@ -73,7 +83,7 @@ public class ContactManagerHashMap extends ContactManager implements Printable {
         while (it.hasNext()) {
             Map.Entry<String, Contact> entry = it.next();
             // Match sample outputL Key = 020 Value = ' 020
-            System.out.println("Key= " + entry.getKey() + " Value = '" + entry.getValue().toString());
+            System.out.println("Key= " + entry.getKey() + " Value = " + entry.getValue().toString());
         }
         System.out.println("-----------------------------------------------------------");
     }
