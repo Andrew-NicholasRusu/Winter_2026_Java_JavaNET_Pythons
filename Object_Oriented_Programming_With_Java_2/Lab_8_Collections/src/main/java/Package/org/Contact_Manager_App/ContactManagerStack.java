@@ -1,7 +1,7 @@
 package Package.org.Contact_Manager_App;
 
 // e) Define a class called ContactManagerStack that extends ContactManager and implements
-// Printable.
+// Package.org.Contact_Manager_App.Printable.
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,9 +11,28 @@ import java.util.Stack;
 public class ContactManagerStack extends ContactManager implements Printable {
     private Stack<Contact> contactsList;
 
+    // No-arg constructor
+    public ContactManagerStack() {
+        this.contactsList = new Stack<>();
+    }
+
+    // Constructor with arguments
+    public ContactManagerStack(Stack<Contact> contactsList) {
+        this.contactsList = contactsList;
+    }
+
+    // Getters and Setters
+    public Stack<Contact> getContactsList(){
+        return contactsList;
+    }
+
+    public void setContactsList(Stack<Contact> contactsList) {
+        this.contactsList = contactsList;
+    }
+
     @Override
     public void addContact(String id, String name, String mobile, String email) {
-        contactsList.add(new Contact(id, name, mobile, email));
+        contactsList.add(new Contact(name, mobile, email, id));
     }
 
     @Override
@@ -48,6 +67,19 @@ public class ContactManagerStack extends ContactManager implements Printable {
     }
 
     @Override
+    public boolean removeContact(String id) {
+        Iterator<Contact> it = contactsList.iterator();
+        while (it.hasNext()) {
+            Contact c = it.next();
+            if (c.getId().equals(id)) {
+                it.remove();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public void printAll() {
         System.out.println("Stack Content:");
         System.out.println("----------------------------------------------------------");
@@ -56,6 +88,5 @@ public class ContactManagerStack extends ContactManager implements Printable {
             System.out.println(it.next());
         }
         System.out.println("-----------------------------------------------------------");
-
     }
 }
