@@ -6,6 +6,7 @@ public class ReplaceTextCommand implements Command {
     private String newText;
     private int position;
 
+    // Constructor
     public ReplaceTextCommand (StringBuilder document, String oldText, String newText, int position) {
         this.document = document;
         this.oldText = oldText;
@@ -35,6 +36,6 @@ public class ReplaceTextCommand implements Command {
 
     @Override
     public String getDescription() {
-        return "Replace " + oldText + " with " + newText + " at position " + position;
+        return "Replace \"" + oldText + "\" with \"" + newText + "\" at position " + position;
     }
 }
