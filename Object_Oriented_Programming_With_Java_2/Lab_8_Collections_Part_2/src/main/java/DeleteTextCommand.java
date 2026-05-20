@@ -1,4 +1,5 @@
 public class DeleteTextCommand implements Command {
+
     // Fields
     private StringBuilder document;
     private String deletedText;
@@ -6,15 +7,15 @@ public class DeleteTextCommand implements Command {
     private int length;
 
     // Constructor
-    public DeleteTextCommand (StringBuilder document, String deletedText, int startPosition, int length) {
+    public DeleteTextCommand(StringBuilder document, int startPosition, int length) {
         this.document = document;
-        this.deletedText = deletedText;
         this.startPosition = startPosition;
         this.length = length;
     }
 
+    // Methods
     @Override
-    public void execute() {
+    public void execute(){
         if (startPosition < 0 || startPosition + length > document.length()) {
             throw new IndexOutOfBoundsException("Invalid position or length for deletion.");
         }
@@ -23,15 +24,15 @@ public class DeleteTextCommand implements Command {
     }
 
     @Override
-    public void undo() {
+    public void undo(){
         if (startPosition < 0 || startPosition > document.length() || deletedText == null) {
-            throw new IllegalArgumentException("Document state is invalid for undoing insert.");
+            throw new IllegalStateException("Invalid state for undoing delete.");
         }
         document.insert(startPosition, deletedText);
     }
 
     @Override
     public String getDescription() {
-        return "Delete " + length + " characters at startPosition " + startPosition;
+        return "Delete " + length + " characters at position " + startPosition;
     }
 }
