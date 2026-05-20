@@ -96,4 +96,9 @@ public class Contact implements Comparable<Contact>{ // The class should also im
         else
             return false;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%-15s %-25s %-15s %s", id, name, mobileNumber, email);
+    }
 }
