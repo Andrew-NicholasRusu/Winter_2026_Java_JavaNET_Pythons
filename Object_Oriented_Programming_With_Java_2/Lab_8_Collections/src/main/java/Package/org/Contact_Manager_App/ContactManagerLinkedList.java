@@ -1,9 +1,12 @@
 package Package.org.Contact_Manager_App;
 
 // d) Define a class called ContactManagerLinkedList that extends ContactManager and
-// implements Printable.
+// implements Package.org.Contact_Manager_App.Printable.
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class ContactManagerLinkedList extends ContactManager implements Printable {
 
@@ -25,7 +28,7 @@ public class ContactManagerLinkedList extends ContactManager implements Printabl
 
     @Override
     public void addContact(String id, String name, String mobile, String email) {
-        contactsList.add(new Contact(id, name, mobile, email));
+        contactsList.add(new Contact(name, mobile, email, id));
     }
 
     @Override
@@ -57,6 +60,19 @@ public class ContactManagerLinkedList extends ContactManager implements Printabl
             }
         }
         return result;
+    }
+
+    @Override
+    public boolean removeContact(String id) {
+        Iterator<Contact> it = contactsList.iterator();
+        while (it.hasNext()) {
+            Contact c = it.next();
+            if (c.getId().equals(id)) {
+                it.remove();
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
