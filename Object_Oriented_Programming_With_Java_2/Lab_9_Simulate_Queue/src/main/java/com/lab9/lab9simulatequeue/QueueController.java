@@ -41,10 +41,10 @@ public class QueueController {
         dequeue();
     }
 
-    private void dequeue() {
+        private void dequeue() {
         if (queue.isEmpty()) {
-            System.out.println("There is nothing to dequeue!");
-            messageLabel.setText("There is nothing to dequeue!");
+            System.out.println("There's nothing to dequeue!");
+            messageLabel.setText("There's nothing to dequeue!");
         } else {
             queue.poll();
             redrawQueue();
